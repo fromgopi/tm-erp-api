@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+sqlalchemy = "*"
+python-dotenv = "*"
+gunicorn = "*"
+flask-restx = "*"
+psycopg2 = "*"
+flask-psycopg2 = "*"
+flask-sqlalchemy = "*"
+marshmallow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
