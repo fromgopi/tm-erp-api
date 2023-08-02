@@ -1,8 +1,8 @@
 import os
 
-from apps import db, create_app
-from apps.common.constants import DEFAULT_PORT
-from apps.configuration.modules.logger import RequestHandlerLoggerOverride
+from src import db, create_app
+from src.common.constants import DEFAULT_PORT
+from src.configuration.modules.logger import RequestHandlerLoggerOverride
 
 app = create_app()
 

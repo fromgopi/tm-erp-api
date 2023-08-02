@@ -4,7 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Resource, Api
 
-from apps.configuration.manager import setup_configuration
+from src.configuration.manager import setup_configuration
 
 db = SQLAlchemy()
 API = Api()
@@ -36,5 +36,4 @@ def create_app() -> Flask:
     print("calling create app frm the main method")
     setup_configuration(app)
     # register_extensions(app=app)
-    pp(app.config)
     return app

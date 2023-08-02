@@ -3,10 +3,10 @@ import os
 import sys
 import logging
 from dotenv import load_dotenv, find_dotenv
-from apps.common.constants import ENV_PATH
+from src.common.constants import ENV_PATH
 
-from apps.common.exceptions import ConfigurationError
-import apps.resources.strings.configuration as strings
+from src.common.exceptions import ConfigurationError
+import src.resources.strings.configuration as strings
 
 
 def get_configuration(logger):
