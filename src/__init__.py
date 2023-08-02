@@ -3,13 +3,18 @@ from pprint import pp
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Resource, Api
+from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
 
 from src.configuration.manager import setup_configuration
+from src.configuration.modules.logger import setup_logger
 
-db = SQLAlchemy()
 API = Api()
+DB = SQLAlchemy()
+BCRYPT = Bcrypt()
+JWT = JWTManager()
 
-def register_extensions(app)->None:
+def register_extensions(APP)->None:
     """
     Instantiate all the extensions and make 
     available to Flask Instance
@@ -20,8 +25,9 @@ def register_extensions(app)->None:
     Returns:
         None
     """
-    db.init_app(app=app)
-    API.init_app(app=app)
+    DB.init_app(app=APP)
+    BCRYPT.init_app(app=APP)
+    JWT.init_app(app=APP)
 
 def create_app() -> Flask:
     """
@@ -32,8 +38,9 @@ def create_app() -> Flask:
     Returns:
         Flask: Flask instance to export into runner
     """
-    app = Flask(__name__)
-    print("calling create app frm the main method")
-    setup_configuration(app)
-    # register_extensions(app=app)
-    return app
+    APP = Flask(__name__)
+    API.init_app(app=APP)
+    setup_configuration(APP)
+    setup_logger(config=APP.config)
+    register_extensions(APP=APP)
+    return APP
