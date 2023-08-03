@@ -18,6 +18,7 @@ flask-jwt-extended = "*"
 flask-marshmallow = "*"
 flask-cors = "*"
 flask-migrate = "*"
+python-json-logger = "*"
 
 [dev-packages]
 
