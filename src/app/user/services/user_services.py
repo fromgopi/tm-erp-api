@@ -15,12 +15,18 @@ class UserService:
     
     def get_many(self):
         logger.debug("Called get_many from the controller ")
-        users = {
+        data = [
             {
                 'id': 12,
                 'first_name': 'Gopi Krishna',
                 'last_name': 'm',
                 'email': 'fromgopi@tendermilk.com'
+            },
+            {
+                'id': 42,
+                'first_name': 'Rama Krishna',
+                'last_name': 'm',
+                'email': 'fromrama@tendermilk.com'
             }
-        }
-        return response.success(http_status.OK, 'users', users, meta=None)
+        ]
+        return response.success(http_status.OK, 'users', data, meta=None)

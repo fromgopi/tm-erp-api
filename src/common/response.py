@@ -2,11 +2,13 @@
 from http import HTTPStatus as http_status
 import traceback
 from flask import json, Response, request
+import logging
 
+logger = logging.getLogger(__name__)
 
 def custom(response, status):
     """Base response wrapper"""
-    request.log.info(response)
+    logger.info(response)
     return Response(
         mimetype="application/json",
         response=json.dumps(response),

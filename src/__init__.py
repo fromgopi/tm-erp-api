@@ -1,5 +1,5 @@
-from pprint import pp
-
+"""Entry point"""
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_restx import Resource, Api
@@ -29,6 +29,17 @@ def register_extensions(APP)->None:
     BCRYPT.init_app(app=APP)
     JWT.init_app(app=APP)
 
+def register_blueprints(app, prefix):
+    """
+    Register blueprints
+    Args:
+        app (Flask): Flask instance
+        prefix (Str): Prefix route
+    """
+    from src.app.user.controllers.users import USER_API as user_blueprint
+    app.register_blueprint(user_blueprint, url_prefix=prefix)
+    
+
 def create_app() -> Flask:
     """
     Creates instance of Flask app that can be runned from runner 
@@ -43,4 +54,5 @@ def create_app() -> Flask:
     setup_configuration(APP)
     setup_logger(config=APP.config)
     register_extensions(APP=APP)
+    register_blueprints(APP, os.getenv('ROUTE_PREFIX'))
     return APP
