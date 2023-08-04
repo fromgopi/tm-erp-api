@@ -8,7 +8,6 @@ logger = logging.getLogger(name=__name__)
 class UserService:
     """User Service class
     """
-    
     def __init__(self) -> None:
         logger.debug("User service class constructor is called")
         pass
